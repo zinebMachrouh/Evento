@@ -16,10 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('picture', 255)->nullable();
             $table->string('email')->unique();
-            $table->string('password', 255);
+            $table->string('password', 255)->nullable();
             $table->string('social_id')->nullable();
             $table->string('social_type')->nullable();
-            $table->foreignId('role_id')->constrained();
+            $table->foreignId('role_id')->default(3)->constrained();
             $table->rememberToken();
             $table->timestamps();
         });

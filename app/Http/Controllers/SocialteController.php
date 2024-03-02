@@ -27,10 +27,10 @@ class SocialteController extends Controller
                     'social_type' => 'google',
                 ]);
                 Auth::login($new_user);
-                return redirect()->intended('chatify');
+                return redirect()->intended('dashboard');
             } else {
                 Auth::login($user);
-                return redirect()->intended('chatify');
+                return redirect()->intended('dashboard');
             }
         } catch (\Throwable $th) {
             dd("something went wrong! " . $th->getMessage());
@@ -56,10 +56,10 @@ class SocialteController extends Controller
                     'social_type' => 'facebook',
                 ]);
                 Auth::login($new_user);
-                return redirect()->intended('chatify');
+                return redirect()->intended('dashboard');
             } else {
                 Auth::login($user);
-                return redirect()->intended('chatify');
+                return redirect()->intended('dashboard');
             }
         } catch (\Throwable $th) {
             dd("something went wrong! " . $th->getMessage());
