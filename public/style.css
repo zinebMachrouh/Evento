@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+.article {
+    overflow: hidden;
+    height: 100vh;
+}
+
+:root {
+    --white: #fafafa;
+    --dark: #a78bfa;
+    --hover: #9A7AFC;
+    --med: #BCA7FA;
+    --light: #CCBCFA;
+    --black: #111827;
+    --side: #FFC739;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--black);
+    padding: 20px 150px;
+}
+
+header h2 {
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+}
+
+header h2 img {
+    width: 21px;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+}
+
+.active {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    margin-left: 50px;
+    background-color: var(--dark);
+    color: var(--black);
+    padding: 5px 30px;
+    /* border-radius: 15px; */
+}
+
+#welcome nav a:last-child:hover {
+    background-color: var(--hover);
+    transition: all ease .3s;
+}
+
+#hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--black);
+    height: 93vh;
+    padding: 0px 150px;
+}
+
+.left-hero {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.left-hero h1 {
+    font-size: 42px;
+    color: var(--dark);
+}
+
+.left-hero p {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.right-hero img {
+    width: 750px;
+}
+
+.botonat {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.botonat a {
+    color: var(--white);
+    text-decoration: none;
+    padding: 5px 15px;
+    color: var(--black);
+}
+
+.botonat a:first-child {
+    background-color: var(--med);
+}
+
+.botonat a:last-child {
+    background-color: var(--side);
+}
+
+.mini-cards {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.mini-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+}
+
+.mini-card span {
+    color: var(--white);
+}
+
+.mini-card:nth-child(1) h4 {
+    color: var(--dark);
+    font-size: 24px;
+}
+
+.mini-card:nth-child(2) h4 {
+    color: var(--med);
+    font-size: 24px;
+}
+
+.mini-card:nth-child(3) h4 {
+    color: var(--light);
+    font-size: 24px;
+}
+
+.open {
+    color: var(--white);
+    font-size: 26px;
+    display: none;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--black);
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+}
+
+.sidenav a {
+    padding: 8px 50px 8px 8px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--white);
+    display: block;
+    text-align: right;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: var(--light);
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+        padding: 8px ;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+.first{
+    margin-top: 150px;
+}
+@media screen and (max-width:700px) {
+    header {
+        padding: 20px 40px;
+    }
+
+    .right-hero {
+        display: none;
+    }
+
+    .left-hero {
+        width: 100%;
+    }
+
+    #hero-section {
+        margin-left: 0px;
+        padding: 5px 40px;
+    }
+
+    .active {
+        display: none;
+    }
+
+    #welcome nav {
+        display: none;
+    }
+
+    .open {
+        display: block;
+    }
+}
