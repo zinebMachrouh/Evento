@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('social_type')->nullable();
             $table->foreignId('role_id')->default(3)->constrained();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -18,10 +18,13 @@ return new class extends Migration
             $table->dateTime('date');
             $table->string('location');
             $table->integer('seats');
-            $table->string('status');
+            $table->string('status')->default('pending');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->boolean('setting')->default(false);
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

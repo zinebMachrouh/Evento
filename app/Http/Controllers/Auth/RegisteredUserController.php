@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
             'role_id' => 'required',
 
         ]);
-        $picturePath = $request->file('picture')->store('storage', 'public');
+        $picturePath = $request->file('picture')->store('profile_pics', 'public');
 
         $user = User::create([
             'name' => $request->name,
