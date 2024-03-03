@@ -32,14 +32,20 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()], 
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'role_id' => 'required',
+
         ]);
+        $picturePath = $request->file('picture')->store('storage', 'public');
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'picture' => $picturePath,
+            'role_id' => $request->role_id
         ]);
 
         event(new Registered($user));
