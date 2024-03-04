@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -39,7 +40,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
-    Route::get('/organizer/dashboard', [OrganizerController::class, 'index'])->name('organizer.dashboard');
+    Route::get('/organizer/dashboard', [EventController::class, 'index'])->name('organizer.dashboard');
+    Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
+    Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
 
 });
 

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Event extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['title', 'description', 'date', 'location', 'seats', 'status', 'category_id', 'user_id'];
+    protected $fillable = ['title', 'description', 'date', 'location', 'seats', 'status', 'category_id', 'user_id', 'setting'];
 
     public function category()
     {

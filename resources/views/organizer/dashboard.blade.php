@@ -12,7 +12,7 @@
                 <a href="#" title="All Events"><i class="bi bi-grid-1x2-fill"></i></a>
                 <a href="#" title="Statistics"><i
                         class="fa-solid fa-chart-pie"></i></a>
-                    <a href="#" title="Add Event"><i class="bi bi-plus-lg"></i></a>
+                    <a href="{{route('event.create')}}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
