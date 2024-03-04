@@ -19,7 +19,7 @@
     --med: #BCA7FA;
     --light: #CCBCFA;
     --black: #111827;
-    --jet : #171f32;
+    --jet: #171f32;
     --side: #FFC739;
 }
 
@@ -202,7 +202,7 @@ header nav a {
     margin-top: 150px;
 }
 
-#login-body{
+#login-body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -213,7 +213,8 @@ header nav a {
     background-position: center;
     background-size: cover;
 }
-#signup-body{
+
+#signup-body {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -233,6 +234,7 @@ header nav a {
     padding: 2rem;
     color: rgba(243, 244, 246, 1);
 }
+
 #login-body .form-container {
     width: 480px;
     height: 540px;
@@ -242,16 +244,18 @@ header nav a {
     color: rgba(243, 244, 246, 1);
 }
 
-.remember{
+.remember {
     display: flex;
     gap: 3px;
 }
-.group{
+
+.group {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin: 15px 0px;
 }
+
 .title {
     text-align: center;
     letter-spacing: 1px;
@@ -366,6 +370,7 @@ header nav a {
     line-height: 1rem;
     color: rgba(156, 163, 175, 1);
 }
+
 .back {
     position: absolute;
     top: 50px;
@@ -378,6 +383,282 @@ header nav a {
     padding: 10px 14px;
     letter-spacing: 2px;
     font-size: 24px;
+}
+
+#app {
+    display: flex;
+    background-color: var(--black);
+    height: 100vh;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.app-aside {
+    position: fixed;
+    height: 95vh;
+    width: 65px;
+    background-color: var(--jet);
+    margin-left: 30px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 0px;
+}
+
+.article-main h2 {
+    color: var(--med);
+}
+
+.app-aside img {
+    width: 32px;
+}
+
+.app-aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+}
+
+.app-aside nav a {
+    font-size: 23px;
+    color: var(--white);
+    opacity: 0.5;
+}
+
+.active {
+    opacity: 1 !important;
+}
+
+.app-aside nav a:hover {
+    opacity: 1 !important;
+    transition: all ease 0.3s;
+}
+
+.app-aside button {
+    font-size: 23px;
+    color: var(--white);
+    opacity: 0.5;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.app-aside button:hover {
+    opacity: 1 !important;
+    transition: all ease 0.3s;
+}
+
+.app-art {
+    width: 92%;
+    height: 95vh;
+    /* background-color: var(--dark); */
+    margin-left: 130px;
+    padding: 25px 0px;
+}
+
+.article-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search-bar {
+    width: 400px;
+    display: flex;
+    border: #354255 1px solid;
+    border-radius: 6px;
+    overflow: hidden;
+    align-items: center;
+
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px;
+
+}
+
+.search-bar input {
+    width: 90%;
+    padding: 10px;
+    background-color: var(--jet);
+    /* border-radius: 5px 0px 0px 5px; */
+    border: none;
+    color: var(--white);
+    font-size: 13px;
+    outline: none;
+    caret-color: var(--med);
+}
+
+.search-bar i {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--jet);
+    padding: 12px 0px;
+    color: var(--med);
+    /* border-radius: 0px 5px 5px 0px; */
+}
+
+.article-header h1 {
+    color: var(--white);
+}
+
+.plan {
+    border-radius: 16px;
+    padding: 10px;
+    background-color: var(--jet);
+    color: var(--white);
+    width: 350px;
+    height: 410px;
+}
+
+.plan strong {
+    font-weight: 600;
+    color: var(--light);
+}
+
+.plan .inner {
+    padding: 20px;
+    background-color: #1d273d;
+    border-radius: 12px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.plan .pricing {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--light);
+    border-radius: 99em 0 0 99em;
+    display: flex;
+    align-items: center;
+    padding: 0.525em 0.75em;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--black);
+}
+
+.plan .card-title {
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: var(--med);
+    margin-top: 0.5rem;
+}
+
+
+.plan .info {
+    margin-top: 0.5rem;
+}
+
+.plan .features {
+    display: flex;
+    flex-direction: column;
+}
+
+.plan .features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.plan .features li+* {
+    margin-top: 0.75rem;
+}
+
+.plan .features .icon {
+    color: var(--dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.plan .features .icon svg {
+    width: 14px;
+    height: 14px;
+}
+
+.plan .features+* {
+    margin-top: 1.25rem;
+}
+
+.plan .actions {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.request {
+    background-color: var(--med);
+    border-radius: 6px;
+    color: var(--jet);
+    font-weight: 500;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    width: 80%;
+    padding: 0.625em 0.75em;
+    text-decoration: none;
+}
+
+.modify {
+    background-color: var(--side);
+    width: 16%;
+    padding: 0.625em 0px;
+    border-radius: 6px;
+    color: var(--jet);
+    font-weight: 500;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.profilePic {
+    width: 42px;
+    height: 42px;
+    border-radius: 200px;
+    overflow: hidden;
+    border: 2px solid var(--dark);
+}
+
+.plan .button {
+    background-color: var(--med);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 0.625em 0.75em;
+    text-decoration: none;
+}
+
+.plan .button:hover,
+.plan .button:focus {
+    background-color: var(--dark);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 @media screen and (max-width:700px) {

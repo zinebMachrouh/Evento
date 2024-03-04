@@ -5,14 +5,14 @@
 @endsection
 
 @section('content')
-        <div id="app">
+    <div id="app">
         <aside class="app-aside">
-            <h2><img src="{{ asset('light-logo.png') }}" alt="logo"></h2>
+            <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="#" title="All Applicants" class="active"><i
-                        class="bi bi-grid-1x2-fill"></i></a>
-                <a href="#" title="All Jobs"><i class="bi bi-file-earmark"></i>
-                <a href="#" title="Add Offer"><i class="bi bi-plus-lg"></i></a>
+                <a href="#" title="All Events"><i class="bi bi-grid-1x2-fill"></i></a>
+                <a href="#" title="Statistics"><i
+                        class="fa-solid fa-chart-pie"></i></a>
+                    <a href="#" title="Add Event"><i class="bi bi-plus-lg"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -22,69 +22,63 @@
         <article class="app-art">
             <div class="article-header">
                 <h1>Hello {{ Auth::user()->name }}</h1>
+                <div class="header-right">
+                    <form action="#" method="GET" class="search-bar">
+                        <input type="text" name="search" id="search"
+                            placeholder="Find The Perfect Event..."{{ request('search') }}>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </form>
+                    <div class="profile">
+                        <img src="{{asset('storage/'.Auth::user()->picture)}}" alt="profile picture" class="profilePic">
+                    </div>
+                </div>
             </div>
             <div class="article-main">
                 <h2>All Events</h2>
                 <div class="cards">
-                    {{-- @foreach ($applicants as $app)
+                    @foreach ($events as $event)
                         <div class="plan">
                             <div class="inner">
                                 <span class="pricing">
-                                    @foreach ($app->jobs as $job)
-                                        <span>{{ $job->title }}</span>
-                                    @endforeach
+                                    <span>{{ $event->status }}</span>
                                 </span>
                                 <div class="content">
-                                    <h4 class="sub-title">{{ $app->title }}</h4>
-                                    <p class="title">{{ $app->fname }} {{ $app->lname }}</p>
-                                    <p class="info">{{ $app->about }}</p>
+                                    <h4 class="sub-title">{{ $event->category->name }}</h4>
+                                    <p class="card-title">{{ $event->title }}</p>
+                                    <p class="info">{{ $event->description }}</p>
 
                                 </div>
                                 <ul class="features">
                                     <li>
                                         <span class="icon">
-                                            <svg height="24" width="24" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                                <path fill="currentColor"
-                                                    d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z">
-                                                </path>
-                                            </svg>
+                                            <i class="fa-solid fa-location-dot"></i>
                                         </span>
-                                        <span>{{ $app->user->email }}</span>
+                                        <span>{{ $event->location }}</span>
                                     </li>
                                     <li>
                                         <span class="icon">
-                                            <svg height="24" width="24" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                                <path fill="currentColor"
-                                                    d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z">
-                                                </path>
-                                            </svg>
+                                            <i class="fa-regular fa-clock"></i>
                                         </span>
-                                        <span>0{{ $app->user->phoneNumber }}</span>
+                                        <span>{{ date('F d Y / H:i', strtotime($event->date)) }}</span>
                                     </li>
                                     <li>
                                         <span class="icon">
-                                            <svg height="24" width="24" viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                                <path fill="currentColor"
-                                                    d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z">
-                                                </path>
-                                            </svg>
+                                            <i class="fa-solid fa-ticket"></i>
                                         </span>
-                                        <span>{{ $app->currentPost }}</span>
+                                        <span>Available Seats : {{ $event->seats }}</span>
                                     </li>
                                 </ul>
-                                <div class="action">
-                                    <a href="{{ route('downloadCV', $app->user) }}" target="_blank" class="request">Download CV</a>
+                                <div class="actions">
+                                    <a href="#" class="request">View Reservations</a>
+                                    <a href="#" class="modify"><i class="fa-solid fa-pen"></i></a>
                                 </div>
                             </div>
                         </div>
-                    @endforeach --}}
+                    @endforeach
                 </div>
+            </div>
+            <div>
+                {{$events->links()}}
             </div>
         </article>
     </div>

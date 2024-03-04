@@ -28,8 +28,14 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        $credentials = $request->only('email', 'password');
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role_id === 2) {
+                return redirect()->intended('organizer/dashboard');
+            }
+        }
     }
 
     /**

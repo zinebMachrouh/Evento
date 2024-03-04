@@ -27,10 +27,14 @@ class SocialteController extends Controller
                     'social_type' => 'google',
                 ]);
                 Auth::login($new_user);
-                return redirect()->intended('dashboard');
+                if ($new_user->role_id === 2) {
+                    return redirect()->intended('organizer/dashboard');
+                }
             } else {
                 Auth::login($user);
-                return redirect()->intended('dashboard');
+                if ($user->role_id === 2) {
+                    return redirect()->intended('organizer/dashboard');
+                }
             }
         } catch (\Throwable $th) {
             dd("something went wrong! " . $th->getMessage());
@@ -56,10 +60,14 @@ class SocialteController extends Controller
                     'social_type' => 'facebook',
                 ]);
                 Auth::login($new_user);
-                return redirect()->intended('dashboard');
+                if ($new_user->role_id === 2) {
+                    return redirect()->intended('organizer/dashboard');
+                }
             } else {
                 Auth::login($user);
-                return redirect()->intended('dashboard');
+                if ($user->role_id === 2) {
+                    return redirect()->intended('organizer/dashboard');
+                }
             }
         } catch (\Throwable $th) {
             dd("something went wrong! " . $th->getMessage());

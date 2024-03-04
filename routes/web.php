@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialteController;
@@ -18,10 +19,6 @@ use App\Http\Controllers\SocialteController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -42,7 +39,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
-    
+    Route::get('/organizer/dashboard', [OrganizerController::class, 'index'])->name('organizer.dashboard');
+
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
