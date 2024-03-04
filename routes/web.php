@@ -43,6 +43,9 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/organizer/dashboard', [EventController::class, 'index'])->name('organizer.dashboard');
     Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
     Route::post('/event/store', [EventController::class, 'store'])->name('event.store');
+    Route::get('/event/update/{event}', [EventController::class, 'update'])->name('event.update');
+    Route::put('/event/modify{event}', [EventController::class, 'modify'])->name('event.modify');
+    Route::delete('/event/destroy/{event}', [EventController::class, 'destroy'])->name('event.destroy');
 
 });
 

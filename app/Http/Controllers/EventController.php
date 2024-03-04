@@ -45,4 +45,45 @@ class EventController extends Controller
 
         return redirect()->route('organizer.dashboard');
     }
+
+    public function update(Event $event)
+    {
+        $categories = Category::get();
+
+        return view('organizer.modifyEvent', compact('event','categories'));
+    }
+
+
+    public function modify(Request $request, Event $event){
+        $validatedData = $request->validate([
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'date' => 'required|date',
+            'location' => 'required|string',
+            'seats' => 'required',
+            'category_id' => 'required',
+            'setting' => 'required',
+        ]);
+
+        $event->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'date' => $validatedData['date'],
+            'location' => $validatedData['location'],
+            'seats' => $validatedData['seats'],
+            'category_id' => $validatedData['category_id'],
+            'setting' => $validatedData['setting'],
+        ]);
+
+        return redirect()->route('organizer.dashboard');
+
+    }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+
+        return redirect()->route('organizer.dashboard');
+    }
+
 }
