@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
@@ -58,5 +59,5 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
-    
+    Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
 });

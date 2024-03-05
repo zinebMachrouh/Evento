@@ -37,7 +37,7 @@
                         Organizer
                     </label>
                     <label>
-                        <input type="radio" name="role_id" value="2" required>
+                        <input type="radio" name="role_id" value="3" required>
                         Client
                     </label>
                 </div>
