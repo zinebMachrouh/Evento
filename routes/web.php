@@ -36,6 +36,8 @@ Route::get('/login/google/callback', [SocialteController::class, 'handleGoogleCa
 Route::get('/auth/facebook', [SocialteController::class, 'redirectToFacebook'])->name('facebook');
 Route::get('/auth/facebook/callback', [SocialteController::class, 'handleFacebookCallback']);
 
+Route::get('/dashboard',[ProfileController::class , 'dashboard'])->name('dashboard')->middleware('auth');
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
     
 });

@@ -28,7 +28,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -52,9 +52,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        if ($user->role_id === 2) {
-            return redirect()->intended('organizer/dashboard');
-        }
+        return redirect()->route('dashboard');
+
 
     }
 }

@@ -14,6 +14,18 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+    public function dashboard(){
+        $user = Auth::user();
+        if ($user->role_id === 2) {
+            return redirect()->intended('organizer/dashboard');
+        }elseif ($user->role_id === 3) {
+            return redirect()->intended('client/dashboard');
+        }else{
+            return redirect()->intended('admin/dashboard');
+        }
+
+    }
+    
     public function edit(Request $request): View
     {
         return view('profile.edit', [

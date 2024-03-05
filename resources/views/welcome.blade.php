@@ -26,7 +26,7 @@
                 @endif
             </nav>
             @auth
-                <a href="{{ url('organizer/dashboard') }}" class="active">Dashboard</a>
+                <a href="{{ route('dashboard') }}" class="active">Dashboard</a>
             @else
                 @if (Route::has('register'))
                     <a href="{{ route('register') }}" class="active">Register</a>
