@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             $table->foreignId('reservation_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('qrcode', 255);
             $table->string('path', 255);
             $table->string('unique_id', 255);
             $table->softDeletes();

@@ -34,10 +34,17 @@
                     <input type="text" name="location" id="location" placeholder="Enter Location"
                         value="{{ $event->location }}">
                 </div>
-                <div class="input-group">
-                    <label for="seats">Seats</label>
-                    <input type="number" name="seats" id="seats" placeholder="Enter Seats"
-                        value="{{ $event->seats }}">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="input-group" style="margin: 0px !important;">
+                        <label for="price">Price</label>
+                        <input type="number" name="price" id="price" placeholder="Enter Price"
+                            value="{{ $event->price }}">
+                    </div>
+                    <div class="input-group" style="margin: 0px !important;">
+                        <label for="seats">Seats</label>
+                        <input type="number" name="seats" id="seats" placeholder="Enter Seats"
+                            value="{{ $event->seats }}">
+                    </div>
                 </div>
                 <div class="input-group">
                     <label for="category_id">Category</label>

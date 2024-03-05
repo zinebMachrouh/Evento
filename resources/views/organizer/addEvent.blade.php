@@ -29,16 +29,24 @@
                     <label for="location">Location</label>
                     <input type="text" name="location" id="location" placeholder="Enter Location">
                 </div>
-                <div class="input-group">
-                    <label for="seats">Seats</label>
-                    <input type="number" name="seats" id="seats" placeholder="Enter Seats">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="input-group">
+                        <label for="price">Price</label>
+                        <input type="number" name="price" id="price" placeholder="Enter Price">
+                    </div>
+
+                    <div class="input-group" style="margin: 0px !important;">
+                        <label for="seats">Seats</label>
+                        <input type="number" name="seats" id="seats" placeholder="Enter Seats">
+                    </div>
+
                 </div>
                 <div class="input-group">
                     <label for="category_id">Category</label>
                     <select name="category_id" id="category_id">
                         <option value="" hidden>Pick A Category</option>
                         @foreach ($categories as $cat)
-                            <option value="{{ $cat->id }}">{{$cat->name}}</option>
+                            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
                 </div>

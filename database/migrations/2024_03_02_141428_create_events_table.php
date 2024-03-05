@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
+            $table->integer('price');
             $table->dateTime('date');
             $table->string('location');
             $table->integer('seats');
@@ -24,7 +25,6 @@ return new class extends Migration
             $table->boolean('setting')->default(false);
             $table->timestamps();
             $table->softDeletes();
-
         });
     }
 

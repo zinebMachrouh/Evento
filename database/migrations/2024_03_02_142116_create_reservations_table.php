@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('event_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('status')->default('pending');
+            $table->integer('seatNumber')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
