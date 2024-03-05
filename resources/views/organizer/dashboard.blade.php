@@ -9,8 +9,8 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="#" title="All Events" class="n-act"><i class="bi bi-grid-1x2-fill"></i></a>
-                <a href="#" title="Statistics"><i
+                <a href="{{route('organizer.dashboard')}}" title="All Events" class="n-act"><i class="bi bi-grid-1x2-fill"></i></a>
+                <a href="{{route('organizer.statistics')}}" title="Statistics"><i
                         class="fa-solid fa-chart-pie"></i></a>
                     <a href="{{route('event.create')}}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
             </nav>
@@ -77,7 +77,7 @@
                     @endforeach
                 </div>
             </div>
-            <div>
+            <div class="pagination">
                 {{$events->links()}}
             </div>
         </article>

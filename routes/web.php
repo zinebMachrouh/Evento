@@ -46,6 +46,7 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::get('/event/update/{event}', [EventController::class, 'update'])->name('event.update');
     Route::put('/event/modify{event}', [EventController::class, 'modify'])->name('event.modify');
     Route::delete('/event/destroy/{event}', [EventController::class, 'destroy'])->name('event.destroy');
+    Route::get('/organizer/statistics', [OrganizerController::class, 'statistics'])->name('organizer.statistics');
 
 });
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('reservation_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('qrcode', 255);
             $table->string('path', 255);
+            $table->string('unique_id', 255);
             $table->softDeletes();
             $table->timestamps();
         });
