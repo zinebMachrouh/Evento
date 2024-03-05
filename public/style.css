@@ -702,6 +702,62 @@ header nav a {
     border-color: var(--dark);
 }
 
+table {
+    margin-top: 30px;
+    width: 100%;
+    background-color: var(--jet);
+    border-collapse: collapse;
+}
+
+table thead th {
+    padding: 15px;
+    border-bottom: var(--dark) 1px solid;
+    text-align: left;
+    color: var(--white);
+}
+
+table tbody td {
+    padding: 15px;
+    border-bottom: var(--dark) 1px solid;
+    text-align: left;
+    color: #ccc;
+}
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+}
+
+.table-actions a {
+    background-color: var(--side);
+    border-radius: 5px;
+    font-size: 18px;
+    color: var(--jet);
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    height: 40px;
+}
+
+.table-actions button {
+    background-color: #dd2020;
+    color: var(--white);
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width:700px) {
     header {
         padding: 20px 40px;

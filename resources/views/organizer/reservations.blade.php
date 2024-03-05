@@ -56,18 +56,18 @@
                                 <td>{{ $reserv->user->email }}</td>
                                 <td>{{ $reserv->created_at }}</td>
                                 <td>{{ $reserv->status }}</td>
-                                <td>
+                                <td class="table-actions">
                                     @if ($event->setting === 0)
                                         @if ($reserv->status == 'pending')
-                                            <a href="{{route('reservation.confirm',$reserv)}}">Confirm</a>
+                                            <a href="{{route('reservation.confirm',$reserv)}}" class="confirm"><i class="fa-solid fa-check"></i></a>
                                         @elseif($reserv->status == 'confirmed')
-                                            <a href="{{route('reservation.cancel',$reserv)}}">Cancel</a>
+                                            <a href="{{route('reservation.cancel',$reserv)}}" class="cancel"><i class="fa-solid fa-ban"></i></a>
                                         @endif
                                     @endif
                                     <form action="{{route('reservation.delete',$reserv)}}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit">Delete Event</button>
+                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
                                     </form>
 
                                 </td>
