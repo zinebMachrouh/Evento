@@ -12,14 +12,17 @@ class OrganizerController extends Controller
 {
     public function statistics()
     {
-        $data = [
-            'totalEvents' => Event::count(),
-            'confirmedEvents' => Event::where('status','confirmed')->count(),
-            'pendingEvents' => Event::where('status','pending')->count(),
-            'totalReservations' => Reservation::count(),
-            'uniqueUsers' => Reservation::distinct('user_id')->count('user_id'),
-        ];
+        $userId = Auth::user()->id; 
 
+        $events = Event::where('user_id', $userId)->get();
+
+        $data = [
+            'totalEvents' => $events->count(),
+            'confirmedEvents' => $events->where('status', 'confirmed')->count(),
+            'pendingEvents' => $events->where('status', 'pending')->count(),
+            'totalReservations' => Reservation::whereIn('event_id', $events->pluck('id'))->count(),
+            'uniqueUsers' => Reservation::whereIn('event_id', $events->pluck('id'))->distinct('user_id')->count('user_id'),
+        ];
         return view('organizer.statistics', compact('data'));
     }
 }

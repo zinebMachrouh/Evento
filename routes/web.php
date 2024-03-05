@@ -4,6 +4,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\SocialteController;
 
 /*
@@ -47,6 +48,10 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::put('/event/modify{event}', [EventController::class, 'modify'])->name('event.modify');
     Route::delete('/event/destroy/{event}', [EventController::class, 'destroy'])->name('event.destroy');
     Route::get('/organizer/statistics', [OrganizerController::class, 'statistics'])->name('organizer.statistics');
+    Route::get('/event/reservations/{event}', [ReservationController::class, 'index'])->name('event.reservations');
+    Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'delete'])->name('reservation.delete');
+    Route::get('/reservation/confirm/{reservation}', [ReservationController::class, 'confirm'])->name('reservation.confirm');
+    Route::get('/reservation/cancel/{reservation}', [ReservationController::class, 'cancel'])->name('reservation.cancel');
 
 });
 

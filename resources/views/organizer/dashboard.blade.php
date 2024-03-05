@@ -9,10 +9,10 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="{{route('organizer.dashboard')}}" title="All Events" class="n-act"><i class="bi bi-grid-1x2-fill"></i></a>
-                <a href="{{route('organizer.statistics')}}" title="Statistics"><i
-                        class="fa-solid fa-chart-pie"></i></a>
-                    <a href="{{route('event.create')}}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
+                <a href="{{ route('organizer.dashboard') }}" title="All Events" class="n-act"><i
+                        class="bi bi-grid-1x2-fill"></i></a>
+                <a href="{{ route('organizer.statistics') }}" title="Statistics"><i class="fa-solid fa-chart-pie"></i></a>
+                <a href="{{ route('event.create') }}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -29,7 +29,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                     <div class="profile">
-                        <img src="{{asset('storage/'.Auth::user()->picture)}}" alt="profile picture" class="profilePic">
+                        <img src="{{ asset('storage/' . Auth::user()->picture) }}" alt="profile picture" class="profilePic">
                     </div>
                 </div>
             </div>
@@ -69,8 +69,9 @@
                                     </li>
                                 </ul>
                                 <div class="actions">
-                                    <a href="#" class="request">View Reservations</a>
-                                    <a href="{{route('event.update',$event->id)}}" class="modify"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="{{ $event->status == 'pending' ? '#' : route('event.reservations',$event) }}" class="request" style="{{ $event->status == 'pending' ? 'opacity: 0.5; pointer-events: none;' : '' }}">View Reservations</a>
+                                    <a href="{{ route('event.update', $event->id) }}" class="modify"><i
+                                            class="fa-solid fa-pen"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="pagination">
-                {{$events->links()}}
+                {{ $events->links() }}
             </div>
         </article>
     </div>
