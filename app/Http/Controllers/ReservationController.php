@@ -40,9 +40,6 @@ class ReservationController extends Controller
         if ($reservation->status === 'confirmed') {
             $reservation->event->increment('seats', 1);
         }
-        if ($reservation->event->setting) {
-            $reservation->event->decrement('seats', 1);
-        }
         return back()->with('success', 'Reservation deleted successfully.');
     }
     public function reserve(Event $event)
@@ -67,5 +64,8 @@ class ReservationController extends Controller
             $event->decrement('seats', 1);
         }
         return back()->with('success', 'Reservation deleted successfully.');
+    }
+    public function details(){
+
     }
 }
