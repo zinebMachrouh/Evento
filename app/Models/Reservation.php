@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Reservation extends Model
 {
     use HasFactory,SoftDeletes;
-    protected $fillable = ['user_id', 'event_id', 'status'];
+    protected $fillable = ['user_id', 'event_id', 'status','seatNumber'];
 
     public function user()
     {

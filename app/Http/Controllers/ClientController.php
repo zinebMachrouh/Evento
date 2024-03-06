@@ -9,7 +9,7 @@ class ClientController extends Controller
 {
     public function index()
     {
-        $events = Event::where('status', 'confirmed')->paginate(9);
+        $events = Event::where('status', 'confirmed')->where('seats', '<>', 0)->paginate(9);
         return view('client.dashboard', compact('events'));
     }
 }

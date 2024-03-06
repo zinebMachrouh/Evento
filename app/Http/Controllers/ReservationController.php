@@ -37,7 +37,12 @@ class ReservationController extends Controller
     public function delete(Reservation $reservation)
     {
         $reservation->delete();
-
+        if ($reservation->status === 'confirmed') {
+            $reservation->event->increment('seats', 1);
+        }
+        if ($reservation->event->setting) {
+            $reservation->event->decrement('seats', 1);
+        }
         return back()->with('success', 'Reservation deleted successfully.');
     }
     public function reserve(Event $event)
@@ -51,7 +56,7 @@ class ReservationController extends Controller
         ]);
         $reserv->seatNumber = $reserv->id;
         $reserv->save();
-        
+
         $ticket = Ticket::create([
             'reservation_id' => $reserv->id,
             'path' => 'path',

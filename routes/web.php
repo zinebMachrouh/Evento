@@ -60,4 +60,6 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 
 Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
+    Route::get('/event/reserve/{event}', [ReservationController::class, 'reserve'])->name('event.reserve');
+
 });

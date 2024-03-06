@@ -39,6 +39,9 @@
                     @foreach ($events as $event)
                         <div class="plan">
                             <div class="inner">
+                                <span class="pricing">
+                                    <span>{{ $event->price }} Dhs</span>
+                                </span>
                                 <div class="content">
                                     <h4 class="sub-title">{{ $event->category->name }}</h4>
                                     <p class="card-title">{{ $event->title }}</p>
@@ -66,7 +69,7 @@
                                     </li>
                                 </ul>
                                 <div class="actions">
-                                    <a href="#" class="request">Reserve Place</a>
+                                    <a href="{{route('event.reserve',$event)}}" class="request">Reserve Place</a>
                                     <a href="#" class="modify"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 </div>
                             </div>
