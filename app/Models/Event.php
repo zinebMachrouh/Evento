@@ -25,4 +25,17 @@ class Event extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+    public function updateTotalSeats($newTotalSeats)
+    {
+        $oldTotalSeats = $this->totalSeats;
+
+        $seatsDifference = $newTotalSeats - $oldTotalSeats;
+
+        $this->seats += $seatsDifference;
+
+        $this->seats = max(0, $this->seats);
+
+        $this->totalSeats = $newTotalSeats;
+        $this->save();
+    }
 }

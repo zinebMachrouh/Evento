@@ -41,8 +41,8 @@
                             value="{{ $event->price }}">
                     </div>
                     <div class="input-group" style="margin: 0px !important;">
-                        <label for="seats">Seats</label>
-                        <input type="number" name="seats" id="seats" placeholder="Enter Seats"
+                        <label for="totalSeats">Seats</label>
+                        <input type="number" name="totalSeats" id="totalSeats" placeholder="Enter Seats"
                             value="{{ $event->seats }}">
                     </div>
                 </div>

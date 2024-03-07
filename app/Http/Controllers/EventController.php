@@ -35,23 +35,26 @@ class EventController extends Controller
                 }
             },],
             'location' => 'required|string',
-            'seats' => 'required',
+            'totalSeats' => 'required|min:0|integer',
             'category_id' => 'required',
             'setting' => 'required',
             'price' => 'required',
         ]);
 
-        Event::create([
+        $event = Event::create([
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],
             'date' => $validatedData['date'],
             'location' => $validatedData['location'],
-            'seats' => $validatedData['seats'],
+            'totalSeats' => $validatedData['totalSeats'],
             'category_id' => $validatedData['category_id'],
             'user_id' => Auth::user()->id,
             'setting' => $validatedData['setting'],
             'price' => $validatedData['price'],
         ]);
+
+        $event->seats = $event->totalSeats;
+        $event->save();
 
         return redirect()->route('organizer.dashboard');
     }
@@ -75,18 +78,19 @@ class EventController extends Controller
                 }
             },],
             'location' => 'required|string',
-            'seats' => 'required',
+            'totalSeats' => 'required|min:0|integer',
             'category_id' => 'required',
             'setting' => 'required',
             'price' => 'required',
         ]);
+        
+        $event->updateTotalSeats($validatedData['totalSeats']);
 
         $event->update([
             'title' => $validatedData['title'],
             'description' => $validatedData['description'],
             'date' => $validatedData['date'],
             'location' => $validatedData['location'],
-            'seats' => $validatedData['seats'],
             'category_id' => $validatedData['category_id'],
             'setting' => $validatedData['setting'],
             'price' => $validatedData['price'],
