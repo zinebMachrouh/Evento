@@ -63,4 +63,5 @@ Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/event/reserve/{event}', [ReservationController::class, 'reserve'])->name('event.reserve');
     Route::get('/event/details/{event}', [EventController::class, 'details'])->name('event.details');
     Route::delete('/reservation/destroy/{reservation}', [ReservationController::class, 'delete'])->name('reservation.destroy');
+    Route::get('/client/reservations', [ReservationController::class, 'show'])->name('client.reservations');
 });

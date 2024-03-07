@@ -11,7 +11,7 @@
             <nav>
                 <a href="{{ route('client.dashboard') }}" title="All Events" class="n-act"><i
                         class="bi bi-grid-1x2-fill"></i></a>
-                <a href="#" title="All Reservations"><i class="fa-solid fa-ticket"></i></a>
+                <a href="{{ route('client.reservations') }}" title="All Reservations"><i class="fa-solid fa-ticket"></i></a>
                 <a href="#" title="Statistics"><i class="fa-solid fa-chart-pie"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
