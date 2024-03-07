@@ -18,7 +18,8 @@ return new class extends Migration
             $table->integer('price');
             $table->dateTime('date');
             $table->string('location');
-            $table->integer('seats');
+            $table->integer('seats')->nullable();
+            $table->integer('totalSeats');
             $table->string('status')->default('pending');
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();

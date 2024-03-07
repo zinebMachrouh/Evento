@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
@@ -40,7 +41,7 @@ Route::get('/auth/facebook/callback', [SocialteController::class, 'handleFaceboo
 Route::get('/dashboard',[ProfileController::class , 'dashboard'])->name('dashboard')->middleware('auth');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    
+    Route::get('/admin/dashboard', [AdminController::class, 'statistics'])->name('admin.dashboard');
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
