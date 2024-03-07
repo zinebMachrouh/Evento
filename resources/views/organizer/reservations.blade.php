@@ -45,7 +45,7 @@
                         @if ($event->setting === 0)
                             <th>Actions</th>
                         @else
-                            <th>Delete Reservation</th>
+                            <th></th>
                         @endif
                     </thead>
                     <tbody>
@@ -54,20 +54,22 @@
                                 <td>#</td>
                                 <td>{{ $reserv->user->name }}</td>
                                 <td>{{ $reserv->user->email }}</td>
-                                <td>{{ $reserv->created_at }}</td>
+                                <td>{{ date('F d Y / H:i', strtotime($reserv->created_at)) }}</td>
                                 <td>{{ $reserv->status }}</td>
                                 <td class="table-actions">
                                     @if ($event->setting === 0)
                                         @if ($reserv->status == 'pending')
-                                            <a href="{{route('reservation.confirm',$reserv)}}" class="confirm"><i class="fa-solid fa-check"></i></a>
+                                            <a href="{{ route('reservation.confirm', $reserv) }}" class="confirm"><i
+                                                    class="fa-solid fa-check"></i></a>
                                         @elseif($reserv->status == 'confirmed')
-                                            <a href="{{route('reservation.cancel',$reserv)}}" class="cancel"><i class="fa-solid fa-ban"></i></a>
+                                            <a href="{{ route('reservation.cancel', $reserv) }}" class="cancel"><i
+                                                    class="fa-solid fa-ban"></i></a>
                                         @endif
                                     @endif
-                                    <form action="{{route('reservation.delete',$reserv)}}" method="POST">
+                                    <form action="{{ route('reservation.delete', $reserv) }}" method="POST">
                                         @csrf
                                         @method('delete')
-                                        <button type="submit"><i class="fa-solid fa-trash"></i></button>
+                                        <button type="submit"><i class="fa-solid fa-xmark"></i></button>
                                     </form>
 
                                 </td>

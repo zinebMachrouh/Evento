@@ -19,7 +19,13 @@ class ReservationController extends Controller
     public function confirm(Reservation $reservation)
     {
         $reservation->status = 'confirmed';
+        $ticket = Ticket::create([
+            'reservation_id' => $reservation->id,
+            'path' => 'path',
+            'unique_id' => Hash::make($reservation->event->id . $reservation->id),
+        ]);
         $reservation->event->decrement('seats', 1);
+
         $reservation->save();
 
         return back()->with('success', 'Reservation confirmed successfully.');
@@ -54,18 +60,21 @@ class ReservationController extends Controller
         $reserv->seatNumber = $reserv->id;
         $reserv->save();
 
-        $ticket = Ticket::create([
-            'reservation_id' => $reserv->id,
-            'path' => 'path',
-            'unique_id' => Hash::make($event->id . $reserv->id),
-        ]);
+        if ($reserv->status === 'confirmed') {
+            $ticket = Ticket::create([
+                'reservation_id' => $reserv->id,
+                'path' => 'path',
+                'unique_id' => Hash::make($event->id . $reserv->id),
+            ]);
+        }
 
         if ($event->setting) {
             $event->decrement('seats', 1);
         }
         return back()->with('success', 'Reservation deleted successfully.');
     }
-    public function details(){
 
-    }
+    // public function show(){
+    //     $reservations = Reservation 
+    // }
 }

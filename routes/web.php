@@ -61,5 +61,6 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
 Route::middleware(['auth', 'role:client'])->group(function () {
     Route::get('/client/dashboard', [ClientController::class, 'index'])->name('client.dashboard');
     Route::get('/event/reserve/{event}', [ReservationController::class, 'reserve'])->name('event.reserve');
-
+    Route::get('/event/details/{event}', [EventController::class, 'details'])->name('event.details');
+    Route::delete('/reservation/destroy/{reservation}', [ReservationController::class, 'delete'])->name('reservation.destroy');
 });

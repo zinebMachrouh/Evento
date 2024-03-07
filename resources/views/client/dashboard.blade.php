@@ -9,10 +9,10 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="{{ route('organizer.dashboard') }}" title="All Events" class="n-act"><i
+                <a href="{{ route('client.dashboard') }}" title="All Events" class="n-act"><i
                         class="bi bi-grid-1x2-fill"></i></a>
-                <a href="{{ route('organizer.statistics') }}" title="Statistics"><i class="fa-solid fa-chart-pie"></i></a>
-                <a href="{{ route('event.create') }}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
+                <a href="#" title="All Reservations"><i class="fa-solid fa-ticket"></i></a>
+                <a href="#" title="Statistics"><i class="fa-solid fa-chart-pie"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -69,8 +69,9 @@
                                     </li>
                                 </ul>
                                 <div class="actions">
-                                    <a href="{{route('event.reserve',$event)}}" class="request">Reserve Place</a>
-                                    <a href="#" class="modify"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                                    <a href="{{ route('event.reserve', $event) }}" class="request">Reserve Place</a>
+                                    <a href="{{route('event.details',$event)}}" class="modify"><i
+                                            class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 </div>
                             </div>
                         </div>

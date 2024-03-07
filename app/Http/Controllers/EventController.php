@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Event;
+use App\Models\Reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -99,5 +100,10 @@ class EventController extends Controller
         $event->delete();
 
         return redirect()->route('organizer.dashboard');
+    }
+    public function details(Event $event)
+    {
+        $events = Event::where('category_id',$event->category_id)->where('id','<>',$event->id)->limit(10)->get();
+        return view('client.details', compact('event','events'));
     }
 }

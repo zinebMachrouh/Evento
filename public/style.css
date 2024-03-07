@@ -579,22 +579,22 @@ header nav a {
     margin-top: 0.5rem;
 }
 
-.plan .features {
+.features {
     display: flex;
     flex-direction: column;
 }
 
-.plan .features li {
+.features li {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.plan .features li+* {
+.features li+* {
     margin-top: 0.75rem;
 }
 
-.plan .features .icon {
+.features .icon {
     color: var(--dark);
     display: inline-flex;
     align-items: center;
@@ -603,12 +603,7 @@ header nav a {
     height: 20px;
 }
 
-.plan .features .icon svg {
-    width: 14px;
-    height: 14px;
-}
-
-.plan .features+* {
+.features+* {
     margin-top: 1.25rem;
 }
 
@@ -758,6 +753,72 @@ table tbody td {
     justify-content: center;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservations {
+    width: 77%;
+    overflow: auto;
+}
+
+.event-details {
+    height: 79vh;
+    width: 78%;
+    padding: 20px;
+    background-color: var(--jet);
+    color: var(--white);
+    border-radius: 10px;
+    margin-top: 30px;
+    overflow: auto;
+}
+
+.ticket {
+    background-color: var(--dark) !important;
+}
+
+.event-details .features {
+    margin: 15px 0px;
+}
+
+.event-details h4 {
+    margin: 5px 0px;
+    color: var(--dark);
+}
+
+.organizer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.more {
+    height: 82vh;
+    width: 20%;
+    padding: 20px;
+    background-color: var(--jet);
+    color: var(--white);
+    border-radius: 10px;
+}
+.events{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.event{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+.event:not(:last-child){
+    border-bottom: 1px solid #ffcf544e;
+}
+
+.mini h4{
+    color: var(--dark);
+}
 @media screen and (max-width:700px) {
     header {
         padding: 20px 40px;

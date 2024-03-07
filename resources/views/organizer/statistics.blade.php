@@ -12,22 +12,24 @@
             var myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['Total Events', 'Confirmed Events', 'Pending Events', 'Total Reservations', 'Total Unique Users'],
+                    labels: ['Total Events', 'Confirmed Events', 'Pending Events', 'Total Reservations',
+                        'Total Unique Users'
+                    ],
                     datasets: [{
                         label: 'Evento',
-                        data : {!! json_encode(array_values($data)) !!},
+                        data: {!! json_encode(array_values($data)) !!},
                         backgroundColor: [
-                            '#FFC73974', 
+                            '#FFC73974',
                             '#9A7AFC74',
-                            '#a78bfa74', 
-                            '#BCA7FA74', 
+                            '#a78bfa74',
+                            '#BCA7FA74',
                             '#CCBCFA74',
                         ],
                         borderColor: [
-                            '#FFC739', 
+                            '#FFC739',
                             '#9A7AFC',
-                            '#a78bfa', 
-                            '#BCA7FA', 
+                            '#a78bfa',
+                            '#BCA7FA',
                             '#CCBCFA',
                         ],
                         borderWidth: 1
@@ -50,10 +52,10 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="{{route('organizer.dashboard')}}" title="All Events"><i class="bi bi-grid-1x2-fill"></i></a>
-                <a href="{{route('organizer.statistics')}}" title="Statistics" class="n-act"><i
+                <a href="{{ route('organizer.dashboard') }}" title="All Events"><i class="bi bi-grid-1x2-fill"></i></a>
+                <a href="{{ route('organizer.statistics') }}" title="Statistics" class="n-act"><i
                         class="fa-solid fa-chart-pie"></i></a>
-                    <a href="{{route('event.create')}}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
+                <a href="{{ route('event.create') }}" title="Add Event"><i class="bi bi-plus-lg"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -70,14 +72,13 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                     <div class="profile">
-                        <img src="{{asset('storage/'.Auth::user()->picture)}}" alt="profile picture" class="profilePic">
+                        <img src="{{ asset('storage/' . Auth::user()->picture) }}" alt="profile picture" class="profilePic">
                     </div>
                 </div>
             </div>
             <div class="article-main">
                 <h2>Statistics</h2>
-                                <canvas id="myChart" width="400" height="190"></canvas>
-
+                <canvas id="myChart" width="400" height="190"></canvas>
             </div>
         </article>
     </div>
