@@ -9,9 +9,9 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="{{ route('client.dashboard') }}" title="All Events" ><i
-                        class="bi bi-grid-1x2-fill"></i></a>
-                <a href="{{ route('client.reservations') }}" title="All Reservations" class="n-act"><i class="fa-solid fa-ticket"></i></a>
+                <a href="{{ route('client.dashboard') }}" title="All Events"><i class="bi bi-grid-1x2-fill"></i></a>
+                <a href="{{ route('client.reservations') }}" title="All Reservations" class="n-act"><i
+                        class="fa-solid fa-ticket"></i></a>
                 <a href="#" title="Statistics"><i class="fa-solid fa-chart-pie"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
@@ -49,19 +49,25 @@
                             @foreach ($reservations as $reserv)
                                 <tr>
                                     <td>#</td>
-                                    <td>{{ $reserv->event->title }}</td>
-                                    <td>{{ $reserv->seatNumber }}</td>
+                                    <td><strong>{{ $reserv->event->title }}</strong></td>
+                                    <td>{{ $reserv->seatNumber ?? '-' }}</td>
                                     <td>{{ date('F d Y / H:i', strtotime($reserv->created_at)) }}</td>
                                     <td>{{ $reserv->status }}</td>
                                     <td class="table-actions">
                                         @if ($reserv->status === 'confirmed')
                                             <a href="#" class="ticket"><i class="fa-solid fa-ticket"></i></a>
+                                            <form action="{{ route('reservation.destroy', $reserv) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('reservation.destroy', $reserv) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" style="width: fit-content !important; padding:0px 22px !important;">Delete</button>
+                                            </form>
                                         @endif
-                                        <form action="{{ route('reservation.destroy', $reserv) }}" method="POST">
-                                            @csrf
-                                            @method('delete')
-                                            <button type="submit"><i class="fa-solid fa-xmark"></i></button>
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

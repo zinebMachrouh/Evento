@@ -37,6 +37,7 @@ class ReservationController extends Controller
     {
         $reservation->status = 'pending';
         $reservation->event->increment('seats', 1);
+        $reservation->seatNumber = NULL;
         $reservation->save();
 
         return back()->with('success', 'Reservation confirmation cancelled successfully.');
@@ -51,14 +52,13 @@ class ReservationController extends Controller
         return back()->with('success', 'Reservation deleted successfully.');
     }
 
-    public function generateSeat(Reservation $reserv, Event $event) {
+    public function generateSeat(Reservation $reserv, Event $event)
+    {
         $eventSeats = $event->seats;
-        $taken = Reservation::where('event_id', $event->id)
-            ->pluck('seatNumber')
-            ->toArray();
         do {
             $seatNum = mt_rand(1, $eventSeats);
-        } while (in_array($seatNum, $taken));
+            $exists = Reservation::where('event_id', $event->id)->where('seatNumber', $seatNum)->exists();
+        } while ($exists);
         $reserv->seatNumber = $seatNum;
         $reserv->save();
     }
@@ -74,7 +74,7 @@ class ReservationController extends Controller
         ]);
 
         if ($reserv->status === 'confirmed') {
-            $this->generateSeat($reserv,$event);
+            $this->generateSeat($reserv, $event);
 
             $ticket = Ticket::create([
                 'reservation_id' => $reserv->id,
