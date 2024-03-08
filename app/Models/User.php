@@ -40,7 +40,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Reservation::class);
     }
-
+    public function tickets()
+    {
+        return $this->hasManyThrough(Ticket::class, Reservation::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -52,8 +52,8 @@
             <nav>
                 <a href="{{route('categories.index')}}" title="All Categories" ><i
                         class="bi bi-grid-1x2-fill"></i></a>
-                <a href="{{ route('client.dashboard') }}" title="Statistics" class="n-act"><i class="fa-solid fa-chart-pie"></i></a>
-                <a href="" title="All Users"><i class="fa-solid fa-users"></i></a>
+                <a href="{{ route('admin.dashboard') }}" title="Statistics" class="n-act"><i class="fa-solid fa-chart-pie"></i></a>
+                <a href="{{route('admin.users')}}" title="All Users"><i class="fa-solid fa-users"></i></a>
                 <a href="{{route('admin.events')}}" title="All Events"><i class="fa-solid fa-ticket"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">

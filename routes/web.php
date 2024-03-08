@@ -51,6 +51,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/category/store', [CategoryController::class, 'store'])->name('categories.store');
     Route::put('/category/update/{category}', [CategoryController::class, 'update'])->name('categories.update');
     Route::delete('/category/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    Route::delete('/user/ban/{user}', [ClientController::class, 'ban'])->name('user.ban');
+    Route::get('/admin/users', [ClientController::class, 'show'])->name('admin.users');
+
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
