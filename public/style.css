@@ -828,9 +828,69 @@ table tbody td {
     color: var(--dark);
 }
 
-.delete{
-    position: absolute;
-    right: 0px;
+.delete {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.delete button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ea2e2e;
+    border: none;
+    outline: none;
+    color: var(--white);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.modi {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--hover);
+    border: none;
+    outline: none;
+    color: var(--jet);
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+.cat {
+    background-color: var(--jet);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 7px;
+    padding: 15px;
+}
+
+.cat form:first-child button {
+    color: #ea2e2e;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    outline: none;
+}
+
+.cat form:last-child input {
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    outline: none;
+}
+
+.cat form:last-child button {
+    background-color: transparent;
+    color: var(--dark);
+    border: none;
+    font-size: 18px;
+    outline: none;
 }
 
 @media screen and (max-width:700px) {

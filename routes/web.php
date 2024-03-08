@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\OrganizerController;
@@ -30,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('/login/google', [SocialteController::class, 'redirectToGoogle'])->name('google');
 Route::get('/login/google/callback', [SocialteController::class, 'handleGoogleCallback'])->name('google.test');
@@ -38,15 +39,18 @@ Route::get('/login/google/callback', [SocialteController::class, 'handleGoogleCa
 Route::get('/auth/facebook', [SocialteController::class, 'redirectToFacebook'])->name('facebook');
 Route::get('/auth/facebook/callback', [SocialteController::class, 'handleFacebookCallback']);
 
-Route::get('/dashboard',[ProfileController::class , 'dashboard'])->name('dashboard')->middleware('auth');
+Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'statistics'])->name('admin.dashboard');
     Route::get('/admin/events', [AdminController::class, 'index'])->name('admin.events');
     Route::get('/event/confirm/{event}', [EventController::class, 'confirm'])->name('event.confirm');
     Route::delete('/event/delete/{event}', [EventController::class, 'delete'])->name('event.delete');
-
-
+    Route::get('/admin/dashboard', [AdminController::class, 'statistics'])->name('admin.dashboard');
+    Route::get('/admin/categories', [CategoryController::class, 'index'])->name('categories.index');
+    Route::post('/category/store', [CategoryController::class, 'store'])->name('categories.store');
+    Route::put('/category/update/{category}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::delete('/category/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
@@ -61,7 +65,6 @@ Route::middleware(['auth', 'role:organizer'])->group(function () {
     Route::delete('/reservation/delete/{reservation}', [ReservationController::class, 'delete'])->name('reservation.delete');
     Route::get('/reservation/confirm/{reservation}', [ReservationController::class, 'confirm'])->name('reservation.confirm');
     Route::get('/reservation/cancel/{reservation}', [ReservationController::class, 'cancel'])->name('reservation.cancel');
-
 });
 
 Route::middleware(['auth', 'role:client'])->group(function () {
