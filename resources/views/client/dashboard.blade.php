@@ -23,7 +23,7 @@
             <div class="article-header">
                 <h1>Hello {{ Auth::user()->name }}</h1>
                 <div class="header-right">
-                    <form action="#" method="GET" class="search-bar">
+                    <form action="{{route('events.search')}}" method="GET" class="search-bar">
                         <input type="text" name="search" id="search"
                             placeholder="Find The Perfect Event..."{{ request('search') }}>
                         <i class="fa-solid fa-magnifying-glass"></i>

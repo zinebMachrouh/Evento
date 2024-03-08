@@ -123,4 +123,12 @@ class EventController extends Controller
         $event->save();
         return back()->with('success', 'Reservation confirmed successfully.');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $events = Event::where('title', 'like', '%' . $search . '%')->where('status', 'confirmed')->where('seats', '<>', 0)->paginate(9);
+
+        return view('client.dashboard', compact('events'));
+    }
 }
