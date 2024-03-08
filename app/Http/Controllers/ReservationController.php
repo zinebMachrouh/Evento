@@ -54,7 +54,7 @@ class ReservationController extends Controller
 
     public function generateSeat(Reservation $reserv, Event $event)
     {
-        $eventSeats = $event->seats;
+        $eventSeats = $event->totalSeats;
         do {
             $seatNum = mt_rand(1, $eventSeats);
             $exists = Reservation::where('event_id', $event->id)->where('seatNumber', $seatNum)->exists();

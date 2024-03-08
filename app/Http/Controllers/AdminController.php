@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
+    public function index(){
+        $events = Event::where('status','pending')->get();
+        return view('admin.events', compact('events'));
+
+    }
     public function statistics(){
         $data = [
             'totalEvents' => Event::count(),

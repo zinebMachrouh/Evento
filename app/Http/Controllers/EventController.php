@@ -83,7 +83,7 @@ class EventController extends Controller
             'setting' => 'required',
             'price' => 'required',
         ]);
-        
+
         $event->updateTotalSeats($validatedData['totalSeats']);
 
         $event->update([
@@ -105,9 +105,22 @@ class EventController extends Controller
 
         return redirect()->route('organizer.dashboard');
     }
+    public function delete(Event $event)
+    {
+        $event->delete();
+
+        return redirect()->route('admin.events');
+    }
     public function details(Event $event)
     {
-        $events = Event::where('category_id',$event->category_id)->where('id','<>',$event->id)->limit(10)->get();
-        return view('client.details', compact('event','events'));
+        $events = Event::where('category_id', $event->category_id)->where('id', '<>', $event->id)->limit(10)->get();
+        return view('client.details', compact('event', 'events'));
+    }
+
+    public function confirm(Event $event)
+    {
+        $event->status = 'confirmed';
+        $event->save();
+        return back()->with('success', 'Reservation confirmed successfully.');
     }
 }

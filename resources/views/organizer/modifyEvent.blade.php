@@ -70,10 +70,10 @@
                     </label>
                 </div>
                 <div class="buttons">
-                    <button class="modi">Modify Event</button>
+                    <button class="modi" type="submit">Modify Event</button>
                 </div>
             </form>
-            <form action="{{ route('event.destroy', $event->id) }}" method="POST">
+            <form action="{{ route('event.destroy', $event->id) }}" method="POST" class="delete">
                 @csrf
                 @method('delete')
                 <button type="submit">Delete Event</button>

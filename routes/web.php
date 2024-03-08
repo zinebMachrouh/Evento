@@ -42,6 +42,11 @@ Route::get('/dashboard',[ProfileController::class , 'dashboard'])->name('dashboa
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'statistics'])->name('admin.dashboard');
+    Route::get('/admin/events', [AdminController::class, 'index'])->name('admin.events');
+    Route::get('/event/confirm/{event}', [EventController::class, 'confirm'])->name('event.confirm');
+    Route::delete('/event/delete/{event}', [EventController::class, 'delete'])->name('event.delete');
+
+
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {

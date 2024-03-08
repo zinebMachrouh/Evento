@@ -50,9 +50,10 @@
         <aside class="app-aside">
             <img src="{{ asset('logo.png') }}" alt="logo">
             <nav>
-                <a href="" title="All Events" ><i
+                <a href="{{route('admin.events')}}" title="All Events" ><i
                         class="bi bi-grid-1x2-fill"></i></a>
                 <a href="{{ route('client.dashboard') }}" title="Statistics" class="n-act"><i class="fa-solid fa-chart-pie"></i></a>
+                <a href="" title="All Users"><i class="fa-solid fa-users"></i></a>
                 <a href="" title="Add Category"><i class="bi bi-plus-lg"></i></a>
             </nav>
             <form method="POST" action="{{ route('logout') }}">
@@ -73,7 +74,7 @@
                 </div>
             </div>
             <div class="article-main">
-                <h2>All Events</h2>
+                <h2>Statistics</h2>
                 <canvas id="myChart" width="400" height="190"></canvas>
             </div>
         </article>
