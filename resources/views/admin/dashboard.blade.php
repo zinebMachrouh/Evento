@@ -73,7 +73,7 @@
                     
                 </div>
             </div>
-            <div class="article-main">
+            <div class="article-main ad-stat">
                 <h2>Statistics</h2>
                 <canvas id="myChart" width="400" height="190"></canvas>
             </div>

@@ -39,12 +39,13 @@ class RegisteredUserController extends Controller
 
         ]);
         $picturePath = $request->file('picture')->store('profile_pics', 'public');
-
+        $fullPath = 'storage/'.$picturePath;
+        
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'picture' => $picturePath,
+            'picture' => $fullPath,
             'role_id' => $request->role_id
         ]);
 

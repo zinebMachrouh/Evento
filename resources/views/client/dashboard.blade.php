@@ -23,14 +23,20 @@
             <div class="article-header">
                 <h1>Hello {{ Auth::user()->name }}</h1>
                 <div class="header-right">
-                    <form action="{{route('events.search')}}" method="GET" class="search-bar">
+                    <form method="get" action="{{ url('/events/filter') }}" class="filter">
+                        <select name="category_id" id="category">
+                            <option value="" hidden>All Categories</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                        <button type="submit"><i class="fa-solid fa-filter"></i></button>
+                    </form>
+                    <form action="{{ route('events.search') }}" method="GET" class="search-bar">
                         <input type="text" name="search" id="search"
                             placeholder="Find The Perfect Event..."{{ request('search') }}>
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
-                    <div class="profile">
-                        <img src="{{ asset('storage/' . Auth::user()->picture) }}" alt="profile picture" class="profilePic">
-                    </div>
                 </div>
             </div>
             <div class="article-main">
@@ -70,7 +76,7 @@
                                 </ul>
                                 <div class="actions">
                                     <a href="{{ route('event.reserve', $event) }}" class="request">Reserve Place</a>
-                                    <a href="{{route('event.details',$event)}}" class="modify"><i
+                                    <a href="{{ route('event.details', $event) }}" class="modify"><i
                                             class="fa-solid fa-arrow-up-right-from-square"></i></a>
                                 </div>
                             </div>

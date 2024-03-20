@@ -72,7 +72,7 @@
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </form>
                     <div class="profile">
-                        <img src="{{ asset('storage/' . Auth::user()->picture) }}" alt="profile picture" class="profilePic">
+                        <img src="{{ asset(Auth::user()->picture) }}" alt="profile picture" class="profilePic">
                     </div>
                 </div>
             </div>

@@ -127,8 +127,21 @@ class EventController extends Controller
     public function search(Request $request)
     {
         $search = $request->input('search');
+        $categories = Category::all();
+
         $events = Event::where('title', 'like', '%' . $search . '%')->where('status', 'confirmed')->where('seats', '<>', 0)->paginate(9);
 
-        return view('client.dashboard', compact('events'));
+        return view('client.dashboard', compact('events','categories'));
+    }
+    public function filter(Request $request)
+    {
+        $categories = Category::all();
+
+        $selectedCategoryId = $request->input('category_id');
+
+        $events = Event::where('status', 'confirmed')->where('category_id', $selectedCategoryId)->where('seats', '<>', 0)->paginate(9);
+
+
+        return view('client.dashboard', compact('events', 'categories'));
     }
 }

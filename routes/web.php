@@ -53,7 +53,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/category/delete/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
     Route::delete('/user/ban/{user}', [ClientController::class, 'ban'])->name('user.ban');
     Route::get('/admin/users', [ClientController::class, 'show'])->name('admin.users');
-
 });
 
 Route::middleware(['auth', 'role:organizer'])->group(function () {
@@ -77,5 +76,6 @@ Route::middleware(['auth', 'role:client'])->group(function () {
     Route::delete('/reservation/destroy/{reservation}', [ReservationController::class, 'delete'])->name('reservation.destroy');
     Route::get('/client/reservations', [ReservationController::class, 'show'])->name('client.reservations');
     Route::get('/events/search', [EventController::class, 'search'])->name('events.search');
-
+    Route::get('/events/filter', [EventController::class, 'filter'])->name('events.filter');
+    Route::get('/download-ticket-pdf/{ticket}', [ReservationController::class,'downloadTicketPdf'])->name('downloadTicketPdf');
 });

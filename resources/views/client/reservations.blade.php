@@ -55,7 +55,7 @@
                                     <td>{{ $reserv->status }}</td>
                                     <td class="table-actions">
                                         @if ($reserv->status === 'confirmed')
-                                            <a href="#" class="ticket"><i class="fa-solid fa-ticket"></i></a>
+                                            <a href="{{route('downloadTicketPdf',$reserv->ticket)}}" class="ticket"><i class="fa-solid fa-ticket"></i></a>
                                             <form action="{{ route('reservation.destroy', $reserv) }}" method="POST">
                                                 @csrf
                                                 @method('delete')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,8 +11,10 @@ class ClientController extends Controller
 {
     public function index()
     {
+        $categories = Category::all();
+
         $events = Event::where('status', 'confirmed')->where('seats', '<>', 0)->paginate(9);
-        return view('client.dashboard', compact('events'));
+        return view('client.dashboard', compact('events','categories'));
     }
 
     public function show()

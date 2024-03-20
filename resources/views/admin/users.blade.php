@@ -39,7 +39,7 @@
                     <div class="card">
                             <div class="infos">
                                 <div class="image">
-                                    <img src="{{ asset('storage/' . $user->picture) }}" alt="picture">
+                                    <img src="{{ asset($user->picture) }}" alt="picture">
                                 </div>
                                 <div class="comp">
                                     <div>
